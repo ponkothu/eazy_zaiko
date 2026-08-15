@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}商品一覧{% endblock %}
+
+{% block content %}
+<h2>商品一覧</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>商品名</th>
+            <th>種類</th>
+            <th>在庫数</th>
+            <th>価格</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.sku }}</td>
+            <td>{{ product.quantity }}</td>
+            <td>{{ product.price }}</td>
+            <td>
+                <form action="/products/{{ product.id }}/delete" method="post" style="display:inline;">
+                    <button type="submit" onclick="return confirm('削除しますか?')">削除</button>
+                </form>
+            </td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="6">商品が登録されていません</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

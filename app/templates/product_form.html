@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}商品登録{% endblock %}
+
+{% block content %}
+<h2>新規商品登録</h2>
+
+<form action="/products/new" method="post">
+    <label>商品名<br>
+        <input type="text" name="name" required>
+    </label><br><br>
+
+    <label>種類<br>
+        <input type="text" name="sku" required>
+    </label><br><br>
+
+    <label>在庫数<br>
+        <input type="number" name="quantity" value="0" required>
+    </label><br><br>
+
+    <label>価格<br>
+        <input type="number" step="0.01" name="price" required>
+    </label><br><br>
+
+    <button type="submit">登録する</button>
+</form>
+{% endblock %}
